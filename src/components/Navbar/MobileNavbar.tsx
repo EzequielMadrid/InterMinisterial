@@ -7,6 +7,7 @@ import {
   MenuIcon,
   MoonIcon,
   SunIcon,
+  Trophy,
   UserIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -58,10 +59,9 @@ function MobileNavbar() {
             >
               <Link href="/">
                 <HomeIcon className="w-4 h-4" />
-                Home
+                Foro
               </Link>
             </Button>
-
             {isSignedIn ? (
               <>
                 <Button
@@ -71,7 +71,17 @@ function MobileNavbar() {
                 >
                   <Link href="/notifications">
                     <BellIcon className="w-4 h-4" />
-                    Notifications
+                    Notificaciones
+                  </Link>
+                </Button>{" "}
+                <Button
+                  variant="ghost"
+                  className="flex items-center gap-3 justify-start"
+                  asChild
+                >
+                  <Link href="/fixture">
+                    <Trophy className="w-4 h-4" />
+                    <span className="inline">Fixture</span>
                   </Link>
                 </Button>
                 <Button
@@ -81,7 +91,7 @@ function MobileNavbar() {
                 >
                   <Link href="/profile">
                     <UserIcon className="w-4 h-4" />
-                    Profile
+                    Perfil
                   </Link>
                 </Button>
                 <SignOutButton>
@@ -90,14 +100,14 @@ function MobileNavbar() {
                     className="flex items-center gap-3 justify-start w-full"
                   >
                     <LogOutIcon className="w-4 h-4" />
-                    Logout
+                    Cerrar sesión
                   </Button>
                 </SignOutButton>
               </>
             ) : (
               <SignInButton mode="modal">
                 <Button variant="default" className="w-full">
-                  Sign In
+                  Iniciar sesión
                 </Button>
               </SignInButton>
             )}

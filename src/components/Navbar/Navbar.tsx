@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import { currentUser } from "@clerk/nextjs/server";
+import { syncUser } from "@/actions/user.action";
 import DesktopNavbar from "./DesktopNavbar";
 import MobileNavbar from "./MobileNavbar";
-import { syncUser } from "@/actions/user.action";
 
 async function Navbar() {
   const user = await currentUser();

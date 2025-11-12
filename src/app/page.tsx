@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 export default function Home() {
   return (
     // Forum page
-    <div className="m-6 flex items-center justify-around font-mono">
+    <div className="m-6 font-mono">
       <h1>FORO</h1>
     </div>
   );
