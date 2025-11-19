@@ -5,16 +5,16 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import UnAuthenticatedSidebar from "./UnAuthenticatedSidebar";
 import { LinkIcon, MapPinIcon } from "lucide-react";
-import { getUserProfile } from "@/actions/user.action";
+import { getUserByClerkId } from "@/actions/user.actions";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 
 async function Sidebar() {
   const authUser = await currentUser();
   if (!authUser) return <UnAuthenticatedSidebar />;
-  const user = await getUserProfile(authUser.id);
+  const user = await getUserByClerkId(authUser.id);
   if (!user) return null;
-  console.log("Authenticated Sidebar for user:", user);
+  // console.log("Authenticated Sidebar for user:", user);
 
   return (
     <div className="sticky top-20">

@@ -28,11 +28,15 @@ async function DesktopNavbar() {
               <span className="hidden lg:inline">Notificaciones</span>
             </Link>
           </Button>
-          {/* TODO: create an api for this section */}
-          <Button variant="ghost" className="flex items-center gap-2" asChild>
-            <Link href="/fixture">
+          {/*//TODO:create an api for this section*/}
+          <Button
+            variant="ghost"
+            className="flex items-center gap-3 justify-start"
+            asChild
+          >
+            <Link href="/stats">
               <Trophy className="w-4 h-4" />
-              <span className="hidden lg:inline">Fixture</span>
+              <span className="inline">Estadísticas</span>
             </Link>
           </Button>
           <Button variant="ghost" className="flex items-center gap-2" asChild>

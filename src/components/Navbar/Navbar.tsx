@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { currentUser } from "@clerk/nextjs/server";
-import { syncUser } from "@/actions/user.action";
+import { syncUser } from "@/actions/user.actions";
 import DesktopNavbar from "./DesktopNavbar";
 import MobileNavbar from "./MobileNavbar";
 

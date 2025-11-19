@@ -79,9 +79,9 @@ function MobileNavbar() {
                   className="flex items-center gap-3 justify-start"
                   asChild
                 >
-                  <Link href="/fixture">
+                  <Link href="/stats">
                     <Trophy className="w-4 h-4" />
-                    <span className="inline">Fixture</span>
+                    <span className="inline">Estadísticas</span>
                   </Link>
                 </Button>
                 <Button
