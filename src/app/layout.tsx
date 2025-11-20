@@ -6,6 +6,7 @@ import { ThemeProvider } from "next-themes";
 import Navbar from "@/components/navbar/Navbar";
 import Sidebar from "@/components/asidebar/Sidebar";
 import { Toaster } from "react-hot-toast";
+import { esAR } from "./es-AR";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider localization={esAR}>
       <html lang="es-AR" suppressHydrationWarning>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -42,7 +43,6 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <div>
-              zz
               <Navbar />
               <main className="py-8">
                 {/* container to center the content */}
