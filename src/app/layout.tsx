@@ -42,6 +42,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <div>
+              zz
               <Navbar />
               <main className="py-8">
                 {/* container to center the content */}
@@ -53,7 +54,6 @@ export default function RootLayout({
                     <div className="lg:col-span-9">{children}</div>
                   </div>
                 </div>
-                {/* end */}
               </main>
             </div>
             <Toaster />
