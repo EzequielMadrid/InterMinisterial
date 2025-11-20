@@ -12,7 +12,6 @@ import {
 import { DeleteAlertDialog } from "./DeleteAlertDialog";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { formatDistanceToNow } from "date-fns";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import toast from "react-hot-toast";
@@ -22,6 +21,8 @@ import {
   MessageCircleIcon,
   SendIcon,
 } from "lucide-react";
+import { formatDistanceToNow } from "date-fns";
+import { es } from "date-fns/locale";
 
 type Posts = Awaited<ReturnType<typeof getPosts>>;
 type Post = Posts[number];
@@ -106,7 +107,10 @@ function PostCard({ post, dbUserId }: { post: Post; dbUserId: string | null }) {
                     </Link>
                     <span>•</span>
                     <span>
-                      Hace {formatDistanceToNow(new Date(post.createdAt))}
+                      Hace{" "}
+                      {formatDistanceToNow(new Date(post.createdAt), {
+                        locale: es,
+                      })}
                     </span>
                   </div>
                 </div>
@@ -202,7 +206,9 @@ function PostCard({ post, dbUserId }: { post: Post; dbUserId: string | null }) {
                         <span className="text-sm text-muted-foreground">·</span>
                         <span className="text-sm text-muted-foreground">
                           Hace{" "}
-                          {formatDistanceToNow(new Date(comment.createdAt))}
+                          {formatDistanceToNow(new Date(comment.createdAt), {
+                            locale: es,
+                          })}
                         </span>
                       </div>
                       <p className="text-sm break-words">{comment.content}</p>

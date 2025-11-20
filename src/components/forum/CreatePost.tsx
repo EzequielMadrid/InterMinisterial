@@ -28,11 +28,11 @@ function CreatePost() {
         setContent("");
         setImageUrl("");
         setShowImageUpload(false);
-        toast.success("Post created successfully");
+        toast.success("Publicación creada con éxito");
       }
     } catch (error) {
       // console.error("Failed to create post:", error);
-      toast.error("Failed to create post");
+      toast.error("Error al crear la publicación");
     } finally {
       setIsPosting(false);
     }

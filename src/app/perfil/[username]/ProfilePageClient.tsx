@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { SignInButton, useUser } from "@clerk/nextjs";
-import { format } from "date-fns";
 import { toggleFollow } from "@/actions/user.actions";
 import {
   getProfileByUsername,
@@ -34,6 +33,8 @@ import {
   LinkIcon,
   MapPinIcon,
 } from "lucide-react";
+import { format } from "date-fns";
+import { es } from "date-fns/locale";
 
 type User = Awaited<ReturnType<typeof getProfileByUsername>>;
 type Posts = Awaited<ReturnType<typeof getUserPosts>>;
@@ -87,7 +88,11 @@ function ProfilePageClient({
   const isOwnProfile =
     currentUser?.username === user.username ||
     currentUser?.emailAddresses[0].emailAddress.split("@")[0] === user.username;
-  const formattedDate = format(new Date(user.createdAt), "MMMM yyyy");
+  const formattedDate = format(new Date(user.createdAt), "MMMM yyyy", {
+    locale: es,
+  });
+  const capitalizedDate =
+    formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
 
   return (
     <div className="max-w-3xl mx-auto">
@@ -183,7 +188,7 @@ function ProfilePageClient({
                   )}
                   <div className="flex items-center text-muted-foreground">
                     <CalendarIcon className="size-4 mr-2" />
-                    Se unió {formattedDate}
+                    Se unió en {capitalizedDate}
                   </div>
                 </div>
               </div>
@@ -256,7 +261,6 @@ function ProfilePageClient({
                 />
               </div>
               <div className="space-y-2">
-                <Label>Bio</Label>
                 <Textarea
                   name="bio"
                   value={editForm.bio}
@@ -264,7 +268,7 @@ function ProfilePageClient({
                     setEditForm({ ...editForm, bio: e.target.value })
                   }
                   className="min-h-[100px]"
-                  placeholder="Tell us about yourself"
+                  placeholder="BIO"
                 />
               </div>
               <div className="space-y-2">
