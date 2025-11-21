@@ -19,14 +19,20 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { useState } from "react";
-import { useAuth, SignInButton, SignOutButton } from "@clerk/nextjs";
+import { useUser, SignInButton, SignOutButton } from "@clerk/nextjs";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 
 function MobileNavbar() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const { isSignedIn } = useAuth();
+  const { user, isSignedIn } = useUser();
   const { theme, setTheme } = useTheme();
+
+  const perfilHref = user
+    ? `/perfil/${
+        user.username ?? user.primaryEmailAddress?.emailAddress.split("@")[0]
+      }`
+    : "#";
 
   return (
     <div className="flex md:hidden items-center space-x-2">
@@ -47,10 +53,12 @@ function MobileNavbar() {
             <MenuIcon className="h-5 w-5" />
           </Button>
         </SheetTrigger>
+
         <SheetContent side="right" className="w-[300px]">
           <SheetHeader>
             <SheetTitle>Menu</SheetTitle>
           </SheetHeader>
+
           <nav className="flex flex-col space-y-4 mt-6">
             <Button
               variant="ghost"
@@ -62,6 +70,7 @@ function MobileNavbar() {
                 Foro
               </Link>
             </Button>
+
             {isSignedIn ? (
               <>
                 <Button
@@ -73,7 +82,8 @@ function MobileNavbar() {
                     <BellIcon className="w-4 h-4" />
                     Notificaciones
                   </Link>
-                </Button>{" "}
+                </Button>
+
                 <Button
                   variant="ghost"
                   className="flex items-center gap-3 justify-start"
@@ -81,19 +91,21 @@ function MobileNavbar() {
                 >
                   <Link href="/estadisticas">
                     <Trophy className="w-4 h-4" />
-                    <span className="inline">Estadísticas</span>
+                    Estadísticas
                   </Link>
                 </Button>
+
                 <Button
                   variant="ghost"
                   className="flex items-center gap-3 justify-start"
                   asChild
                 >
-                  <Link href="/perfil">
+                  <Link href={perfilHref}>
                     <UserIcon className="w-4 h-4" />
                     Perfil
                   </Link>
                 </Button>
+
                 <SignOutButton>
                   <Button
                     variant="ghost"

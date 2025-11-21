@@ -1,0 +1,69 @@
+{
+  "tablas": {
+    "masculino": [
+      { "team": "Tiburones", "pts": 18, "pj": 7, "gf": 15, "gc": 6 },
+      { "team": "Leones", "pts": 14, "pj": 7, "gf": 10, "gc": 7 }
+    ],
+    "femenino": [
+      { "team": "Águilas", "pts": 20, "pj": 8, "gf": 22, "gc": 4 },
+      { "team": "Panteras", "pts": 15, "pj": 8, "gf": 12, "gc": 9 }
+    ]
+  },
+
+  "goleadores": {
+    "masculino": [
+      { "name": "Juan Pérez", "team": "Tiburones", "goals": 12 },
+      { "name": "Carlos Díaz", "team": "Leones", "goals": 9 }
+    ],
+    "femenino": [
+      { "name": "Laura Gómez", "team": "Águilas", "goals": 14 },
+      { "name": "Valentina Ríos", "team": "Panteras", "goals": 7 }
+    ]
+  },
+
+  "tarjetas": {
+    "masculino": [
+      { "name": "Martín López", "team": "Águilas", "yellow": 3, "red": 1 },
+      { "name": "Diego Romero", "team": "Tiburones", "yellow": 2, "red": 0 }
+    ],
+    "femenino": [
+      { "name": "Sofía Torres", "team": "Águilas", "yellow": 2, "red": 0 },
+      { "name": "Carla Medina", "team": "Panteras", "yellow": 1, "red": 1 }
+    ]
+  },
+
+  "fixture": {
+    "masculino": [
+      {
+        "date": "2025-02-10",
+        "time": "18:00",
+        "home": "Tiburones",
+        "away": "Leones",
+        "field": "Cancha 1"
+      },
+      {
+        "date": "2025-02-12",
+        "time": "20:00",
+        "home": "Águilas",
+        "away": "Titanes",
+        "field": "Cancha 2"
+      }
+    ],
+    "femenino": [
+      {
+        "date": "2025-02-11",
+        "time": "17:00",
+        "home": "Águilas",
+        "away": "Panteras",
+        "field": "Cancha 1"
+      },
+      {
+        "date": "2025-02-13",
+        "time": "19:30",
+        "home": "Fénix",
+        "away": "Águilas",
+        "field": "Cancha 3"
+      }
+    ]
+  }
+}

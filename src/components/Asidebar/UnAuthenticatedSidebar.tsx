@@ -7,23 +7,30 @@ const UnAuthenticatedSidebar = () => (
     <Card>
       <CardHeader>
         <CardTitle className="text-center text-xl font-semibold">
-          Hola de nuevo ✋
+          Hola ✋
         </CardTitle>
       </CardHeader>
       <CardContent>
         <p className="text-center text-muted-foreground mb-4">
-          Inicia sesión para acceder a tu perfil y conectarte con otros.
+          Inicia sesión para acceder a tu perfil y saber novedades sobre el
+          Torneo. Accede a resultados, tabla de goleadores, fixture y mucho más!
+          También podés subir tus propias publicaciones para compartirlas con la
+          comunidad.
         </p>
-        <SignInButton mode="modal">
-          <Button className="w-full" variant="outline">
-            Iniciar sesión
-          </Button>
-        </SignInButton>
-        <SignUpButton mode="modal">
-          <Button className="w-full mt-2" variant="default">
-            Registrarse
-          </Button>
-        </SignUpButton>
+
+        {/* Buttons visible only on sm and above */}
+        <div className="hidden sm:flex flex-col gap-2">
+          <SignInButton mode="modal">
+            <Button className="w-full" variant="outline">
+              Iniciar sesión
+            </Button>
+          </SignInButton>
+          <SignUpButton mode="modal">
+            <Button className="w-full" variant="default">
+              Registrarse
+            </Button>
+          </SignUpButton>
+        </div>
       </CardContent>
     </Card>
   </div>

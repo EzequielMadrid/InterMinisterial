@@ -19,8 +19,8 @@ export async function createPost(content: string, image: string) {
 
     return { success: true, post };
   } catch (error) {
-    console.error("Failed to create post:", error);
-    return { success: false, error: "Failed to create post" };
+    console.error("Error para crear Publicación:", error);
+    return { success: false, error: "No se pudo crear la publicación" };
   }
 }
 
@@ -70,8 +70,8 @@ export async function getPosts() {
 
     return posts;
   } catch (error) {
-    // console.log("No se pudieron obtener los posts", error);
-    throw new Error("No se pudieron obtener los posts");
+    // console.log("No se pudieron obtener las publicaciones", error);
+    throw new Error("No se pudieron obtener las publicaciones");
   }
 }
 
@@ -92,7 +92,7 @@ export async function toggleLike(postId: string) {
       where: { id: postId },
       select: { authorId: true },
     });
-    if (!post) throw new Error("Post no encontrado");
+    if (!post) throw new Error("Publicación no encontrada");
     if (existingLike) {
       // unlike
       await prisma.like.delete({
@@ -147,7 +147,7 @@ export async function createComment(postId: string, content: string) {
       where: { id: postId },
       select: { authorId: true },
     });
-    if (!post) throw new Error("Post no encontrado");
+    if (!post) throw new Error("Publicación no encontrada");
     // Create comment and notification in a transaction
     const [comment] = await prisma.$transaction(async (tx) => {
       // Create comment first
@@ -189,9 +189,9 @@ export async function deletePost(postId: string) {
       where: { id: postId },
       select: { authorId: true },
     });
-    if (!post) throw new Error("Post no encontrado");
+    if (!post) throw new Error("Publicación no encontrada");
     if (post.authorId !== userId)
-      throw new Error("Acceso denegado: No puedes borrar este post");
+      throw new Error("Acceso denegado: No puedes borrar esta publicación");
     await prisma.post.delete({
       where: { id: postId },
     });
@@ -200,6 +200,6 @@ export async function deletePost(postId: string) {
     return { success: true };
   } catch (error) {
     // console.error("UPS! No se pudo borrar", error);
-    return { success: false, error: "Failed to delete post" };
+    return { success: false, error: "No se pudo borrar la publicación" };
   }
 }

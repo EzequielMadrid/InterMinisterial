@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import {
@@ -12,84 +12,36 @@ import {
   TableBody,
 } from "@/components/ui/table";
 
+interface LeagueData {
+  tablas: Record<
+    string,
+    { team: string; pts: number; pj: number; gf: number; gc: number }[]
+  >;
+  goleadores: Record<string, { name: string; team: string; goals: number }[]>;
+  tarjetas: Record<
+    string,
+    { name: string; team: string; yellow: number; red: number }[]
+  >;
+  fixture: Record<
+    string,
+    { date: string; time: string; home: string; away: string; field: string }[]
+  >;
+}
+
 export default function TorneoPage() {
   const [gender, setGender] = useState<"masculino" | "femenino">("masculino");
+  const [data, setData] = useState<LeagueData | null>(null);
 
-  // -------------------------
-  // DATOS LOCALES
-  // -------------------------
+  useEffect(() => {
+    fetch("/data/league.json")
+      .then((res) => res.json())
+      .then((json) => setData(json))
+      .catch((e) => console.error("Error cargando JSON:", e));
+  }, []);
 
-  const tablas = {
-    masculino: [
-      { team: "Tiburones", pts: 18, pj: 7, gf: 15, gc: 6 },
-      { team: "Leones", pts: 14, pj: 7, gf: 10, gc: 7 },
-    ],
-    femenino: [
-      { team: "Águilas", pts: 20, pj: 8, gf: 22, gc: 4 },
-      { team: "Panteras", pts: 15, pj: 8, gf: 12, gc: 9 },
-    ],
-  };
+  if (!data) return <p className="text-center py-10">Cargando datos...</p>;
 
-  const goleadores = {
-    masculino: [
-      { name: "Juan Pérez", team: "Tiburones", goals: 12 },
-      { name: "Carlos Díaz", team: "Leones", goals: 9 },
-    ],
-    femenino: [
-      { name: "Laura Gómez", team: "Águilas", goals: 14 },
-      { name: "Valentina Ríos", team: "Panteras", goals: 7 },
-    ],
-  };
-
-  const tarjetas = {
-    masculino: [
-      { name: "Martín López", team: "Águilas", yellow: 3, red: 1 },
-      { name: "Diego Romero", team: "Tiburones", yellow: 2, red: 0 },
-    ],
-    femenino: [
-      { name: "Sofía Torres", team: "Águilas", yellow: 2, red: 0 },
-      { name: "Carla Medina", team: "Panteras", yellow: 1, red: 1 },
-    ],
-  };
-
-  const fixture = {
-    masculino: [
-      {
-        date: "2025-02-10",
-        time: "18:00",
-        home: "Tiburones",
-        away: "Leones",
-        field: "Cancha 1",
-      },
-      {
-        date: "2025-02-12",
-        time: "20:00",
-        home: "Águilas",
-        away: "Titanes",
-        field: "Cancha 2",
-      },
-    ],
-    femenino: [
-      {
-        date: "2025-02-11",
-        time: "17:00",
-        home: "Águilas",
-        away: "Panteras",
-        field: "Cancha 1",
-      },
-      {
-        date: "2025-02-13",
-        time: "19:30",
-        home: "Fénix",
-        away: "Águilas",
-        field: "Cancha 3",
-      },
-    ],
-  };
-
-  // -------------------------
-  // MAIN UI
-  // -------------------------
+  const { tablas, goleadores, tarjetas, fixture } = data;
 
   return (
     <div className="w-full max-w-5xl mx-auto py-8 px-4 space-y-10">
@@ -120,20 +72,20 @@ export default function TorneoPage() {
             <TableHeader>
               <TableRow>
                 <TableHead>Equipo</TableHead>
-                <TableHead>Puntos</TableHead>
-                <TableHead>PJ</TableHead>
-                <TableHead>GF</TableHead>
-                <TableHead>GC</TableHead>
+                <TableHead className="text-center">Puntos</TableHead>
+                <TableHead className="text-center">PJ</TableHead>
+                <TableHead className="text-center">GF</TableHead>
+                <TableHead className="text-center">GC</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {tablas[gender].map((t, i) => (
                 <TableRow key={i}>
                   <TableCell>{t.team}</TableCell>
-                  <TableCell>{t.pts}</TableCell>
-                  <TableCell>{t.pj}</TableCell>
-                  <TableCell>{t.gf}</TableCell>
-                  <TableCell>{t.gc}</TableCell>
+                  <TableCell className="text-center">{t.pts}</TableCell>
+                  <TableCell className="text-center">{t.pj}</TableCell>
+                  <TableCell className="text-center">{t.gf}</TableCell>
+                  <TableCell className="text-center">{t.gc}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -152,7 +104,7 @@ export default function TorneoPage() {
               <TableRow>
                 <TableHead>Jugador</TableHead>
                 <TableHead>Equipo</TableHead>
-                <TableHead>Goles</TableHead>
+                <TableHead className="text-center">Goles</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -160,7 +112,9 @@ export default function TorneoPage() {
                 <TableRow key={i}>
                   <TableCell>{p.name}</TableCell>
                   <TableCell>{p.team}</TableCell>
-                  <TableCell className="font-semibold">{p.goals}</TableCell>
+                  <TableCell className="font-semibold text-center">
+                    {p.goals}
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -168,7 +122,7 @@ export default function TorneoPage() {
         </CardContent>
       </Card>
 
-      {/* AMARILLAS / EXPULSADOS */}
+      {/* TARJETAS */}
       <Card>
         <CardHeader>
           <CardTitle>Tarjetas</CardTitle>
@@ -179,8 +133,8 @@ export default function TorneoPage() {
               <TableRow>
                 <TableHead>Jugador</TableHead>
                 <TableHead>Equipo</TableHead>
-                <TableHead>Amarillas</TableHead>
-                <TableHead>Rojas</TableHead>
+                <TableHead className="text-center">Amarillas</TableHead>
+                <TableHead className="text-center">Rojas</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -188,10 +142,10 @@ export default function TorneoPage() {
                 <TableRow key={i}>
                   <TableCell>{p.name}</TableCell>
                   <TableCell>{p.team}</TableCell>
-                  <TableCell className="text-yellow-600 font-semibold">
+                  <TableCell className="text-yellow-600 font-semibold text-center">
                     {p.yellow}
                   </TableCell>
-                  <TableCell className="text-red-600 font-semibold">
+                  <TableCell className="text-red-600 font-semibold text-center">
                     {p.red}
                   </TableCell>
                 </TableRow>
@@ -210,21 +164,21 @@ export default function TorneoPage() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Fecha</TableHead>
-                <TableHead>Hora</TableHead>
+                <TableHead className="text-center">Fecha</TableHead>
+                <TableHead className="text-center">Hora</TableHead>
                 <TableHead>Local</TableHead>
                 <TableHead>Visitante</TableHead>
-                <TableHead>Cancha</TableHead>
+                <TableHead className="text-center">Cancha</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {fixture[gender].map((m, i) => (
                 <TableRow key={i}>
-                  <TableCell>{m.date}</TableCell>
-                  <TableCell>{m.time}</TableCell>
+                  <TableCell className="text-center">{m.date}</TableCell>
+                  <TableCell className="text-center">{m.time}</TableCell>
                   <TableCell>{m.home}</TableCell>
                   <TableCell>{m.away}</TableCell>
-                  <TableCell>{m.field}</TableCell>
+                  <TableCell className="text-center">{m.field}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

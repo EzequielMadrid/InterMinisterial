@@ -72,10 +72,10 @@ function PostCard({ post, dbUserId }: { post: Post; dbUserId: string | null }) {
     try {
       setIsDeleting(true);
       const result = await deletePost(post.id);
-      if (result.success) toast.success("Post eliminado correctamente");
+      if (result.success) toast.success("Publicación eliminada correctamente");
       else throw new Error(result.error);
     } catch (error) {
-      toast.error("Error borrando el post");
+      toast.error("Error borrando la publicación");
     } finally {
       setIsDeleting(false);
     }
