@@ -12,6 +12,7 @@ import {
   TableBody,
 } from "@/components/ui/table";
 import leagueData from "@/data/league.json";
+import { PlayoffsBracket } from "./PlayoffsBracket";
 
 interface LeagueData {
   tablas: Record<
@@ -35,14 +36,24 @@ export default function LeaguePage() {
   const [gender, setGender] = useState<"masculino" | "femenino">("masculino");
   const [data, setData] = useState<LeagueData | null>(null);
   const [activeSection, setActiveSection] = useState<Section>("tabla");
+
   useEffect(() => {
     setData(leagueData);
   }, []);
+
   if (!data) return <p className="text-center py-10">Cargando datos...</p>;
+
   const { tablas, goleadores, tarjetas, fixture } = data;
+
+  // Compute goal difference
+  const tablasConDG = tablas[gender].map((t) => ({
+    ...t,
+    dg: t.gf - t.gc,
+  }));
 
   return (
     <div className="w-full max-w-5xl mx-auto px-4 space-y-4">
+      {/* Gender selector */}
       <div className="flex gap-4 justify-center mb-4">
         <Button
           variant={gender === "masculino" ? "default" : "outline"}
@@ -59,6 +70,8 @@ export default function LeaguePage() {
           Femenino
         </Button>
       </div>
+
+      {/* Section selector */}
       <div className="flex justify-center gap-4 mb-4">
         {["tabla", "goleadores", "tarjetas", "fixture"].map((sec) => (
           <Button
@@ -70,13 +83,15 @@ export default function LeaguePage() {
           </Button>
         ))}
       </div>
-      <div className="h-screen overflow-auto">
+
+      <div className="h-screen">
+        {/* Tabla anual */}
         {activeSection === "tabla" && (
           <Card className="h-fit">
-            <CardHeader>
-              <CardTitle>Tabla Anual</CardTitle>
-            </CardHeader>
             <CardContent>
+              <CardHeader>
+                <CardTitle>Tabla Anual</CardTitle>
+              </CardHeader>
               <Table>
                 <TableHeader>
                   <TableRow>
@@ -85,27 +100,47 @@ export default function LeaguePage() {
                     <TableHead className="text-center">PJ</TableHead>
                     <TableHead className="text-center">GF</TableHead>
                     <TableHead className="text-center">GC</TableHead>
+                    <TableHead className="text-center">DG</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {tablas[gender].map((t, i) => (
-                    <TableRow key={i}>
-                      <TableCell>{t.team}</TableCell>
-                      <TableCell className="text-center">{t.pts}</TableCell>
-                      <TableCell className="text-center">{t.pj}</TableCell>
-                      <TableCell className="text-center">{t.gf}</TableCell>
-                      <TableCell className="text-center">{t.gc}</TableCell>
-                    </TableRow>
-                  ))}
+                  {tablasConDG
+                    .slice()
+                    .sort((a, b) => {
+                      if (b.pts !== a.pts) return b.pts - a.pts;
+                      return b.dg - a.dg;
+                    })
+                    .map((t, i) => (
+                      <TableRow key={i}>
+                        <TableCell>{t.team}</TableCell>
+                        <TableCell className="text-center">{t.pts}</TableCell>
+                        <TableCell className="text-center">{t.pj}</TableCell>
+                        <TableCell className="text-center">{t.gf}</TableCell>
+                        <TableCell className="text-center">{t.gc}</TableCell>
+                        <TableCell className="text-center font-semibold">
+                          {t.dg}
+                        </TableCell>
+                      </TableRow>
+                    ))}
                 </TableBody>
               </Table>
             </CardContent>
+
+            {/* Separator */}
+            <div className="my-6 border-t border-slate-300" />
+
+            {/* Playoffs */}
+            <CardContent>
+              <PlayoffsBracket teams={tablasConDG} />
+            </CardContent>
           </Card>
         )}
+
+        {/* Goleadores */}
         {activeSection === "goleadores" && (
           <Card className="h-fit">
             <CardHeader>
-              <CardTitle>Goleadores</CardTitle>
+              <CardTitle>Edición 2025</CardTitle>
             </CardHeader>
             <CardContent>
               <Table>
@@ -131,10 +166,12 @@ export default function LeaguePage() {
             </CardContent>
           </Card>
         )}
+
+        {/* Tarjetas */}
         {activeSection === "tarjetas" && (
           <Card className="h-fit">
             <CardHeader>
-              <CardTitle>Tarjetas</CardTitle>
+              <CardTitle>Edición 2025</CardTitle>
             </CardHeader>
             <CardContent>
               <Table>
@@ -164,6 +201,8 @@ export default function LeaguePage() {
             </CardContent>
           </Card>
         )}
+
+        {/* Fixture */}
         {activeSection === "fixture" && (
           <Card className="h-fit">
             <CardHeader>
