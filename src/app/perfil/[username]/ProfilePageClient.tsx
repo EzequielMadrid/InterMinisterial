@@ -70,7 +70,7 @@ function ProfilePageClient({
     const result = await updateProfile(formData);
     if (result.success) {
       setShowEditDialog(false);
-      toast.success("Profile updated successfully");
+      toast.success("Perfil actualizado con éxito");
     }
   };
   const handleFollow = async () => {
@@ -80,7 +80,7 @@ function ProfilePageClient({
       await toggleFollow(user.id);
       setIsFollowing(!isFollowing);
     } catch (error) {
-      toast.error("Failed to update follow status");
+      toast.error("Error al actualizar el estado de seguimiento");
     } finally {
       setIsUpdatingFollow(false);
     }
@@ -113,7 +113,7 @@ function ProfilePageClient({
                 <div className="w-full mt-6">
                   <div className="flex justify-between mb-4">
                     <div>
-                      <div className="font-semibold">
+                      <div className="font-mono">
                         {user._count.following.toLocaleString()}
                       </div>
                       <div className="text-sm text-muted-foreground">
@@ -122,14 +122,16 @@ function ProfilePageClient({
                     </div>
                     <Separator orientation="vertical" />
                     <div>
-                      <div className="font-semibold">
+                      <div className="font-mono">
                         {user._count.followers.toLocaleString()}
                       </div>
-                      <div className="text-sm text-muted-foreground"></div>
+                      <div className="text-sm text-muted-foreground">
+                        Seguidores
+                      </div>
                     </div>
                     <Separator orientation="vertical" />
                     <div>
-                      <div className="font-semibold">
+                      <div className="font-mono">
                         {user._count.posts.toLocaleString()}
                       </div>
                       <div className="text-sm text-muted-foreground">

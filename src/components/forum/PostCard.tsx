@@ -86,9 +86,9 @@ function PostCard({ post, dbUserId }: { post: Post; dbUserId: string | null }) {
       <CardContent className="p-4 sm:p-6">
         <div className="space-y-4">
           <div className="flex space-x-3 sm:space-x-4">
-            <Link href={`/profile/${post.author.username}`}>
+            <Link href={`/perfil/${post.author.username}`}>
               <Avatar className="size-8 sm:w-10 sm:h-10">
-                <AvatarImage src={post.author.image ?? "/avatar.png"} />
+                <AvatarImage src={post.author.image ?? "/avatar.svg"} />
               </Avatar>
             </Link>
             {/* POST HEADER & TEXT CONTENT */}
@@ -96,13 +96,13 @@ function PostCard({ post, dbUserId }: { post: Post; dbUserId: string | null }) {
               <div className="flex items-start justify-between">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-2 truncate">
                   <Link
-                    href={`/profile/${post.author.username}`}
+                    href={`/perfil/${post.author.username}`}
                     className="font-semibold truncate"
                   >
                     {post.author.name}
                   </Link>
                   <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                    <Link href={`/profile/${post.author.username}`}>
+                    <Link href={`/perfil/${post.author.username}`}>
                       @{post.author.username}
                     </Link>
                     <span>•</span>
@@ -138,7 +138,7 @@ function PostCard({ post, dbUserId }: { post: Post; dbUserId: string | null }) {
             </div>
           )}
           {/* LIKE & COMMENT BUTTONS */}
-          <div className="flex items-center pt-2 space-x-4">
+          <div className="flex items-center pt-2 space-x-4 font-mono">
             {user ? (
               <Button
                 variant="ghost"
@@ -227,9 +227,9 @@ function PostCard({ post, dbUserId }: { post: Post; dbUserId: string | null }) {
                       placeholder="Escribe tu comentario..."
                       value={newComment}
                       onChange={(e) => setNewComment(e.target.value)}
-                      className="min-h-[80px] resize-none"
+                      className="min-h-[80px] resize-none mb-4"
                     />
-                    <div className="flex justify-end mt-2">
+                    <div className="flex justify-end">
                       <Button
                         size="sm"
                         onClick={handleAddComment}
@@ -241,7 +241,7 @@ function PostCard({ post, dbUserId }: { post: Post; dbUserId: string | null }) {
                         ) : (
                           <>
                             <SendIcon className="size-4" />
-                            Comentario
+                            Comentar
                           </>
                         )}
                       </Button>

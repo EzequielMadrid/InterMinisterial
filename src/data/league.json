@@ -2,14 +2,29 @@
   "tablas": {
     "masculino": [
       { "team": "Tiburones", "pts": 18, "pj": 7, "gf": 15, "gc": 6 },
+      { "team": "Leones", "pts": 14, "pj": 7, "gf": 10, "gc": 7 },
+      { "team": "Tiburones", "pts": 18, "pj": 7, "gf": 15, "gc": 6 },
+      { "team": "Leones", "pts": 14, "pj": 7, "gf": 10, "gc": 7 },
+      { "team": "Tiburones", "pts": 18, "pj": 7, "gf": 15, "gc": 6 },
+      { "team": "Leones", "pts": 14, "pj": 7, "gf": 10, "gc": 7 },
+      { "team": "Tiburones", "pts": 18, "pj": 7, "gf": 15, "gc": 6 },
+      { "team": "Leones", "pts": 14, "pj": 7, "gf": 10, "gc": 7 },
+      { "team": "Tiburones", "pts": 18, "pj": 7, "gf": 15, "gc": 6 },
+      { "team": "Leones", "pts": 14, "pj": 7, "gf": 10, "gc": 7 },
+      { "team": "Tiburones", "pts": 18, "pj": 7, "gf": 15, "gc": 6 },
       { "team": "Leones", "pts": 14, "pj": 7, "gf": 10, "gc": 7 }
     ],
     "femenino": [
       { "team": "Águilas", "pts": 20, "pj": 8, "gf": 22, "gc": 4 },
+      { "team": "Panteras", "pts": 15, "pj": 8, "gf": 12, "gc": 9 },
+      { "team": "Panteras", "pts": 15, "pj": 8, "gf": 12, "gc": 9 },
+      { "team": "Panteras", "pts": 15, "pj": 8, "gf": 12, "gc": 9 },
+      { "team": "Panteras", "pts": 15, "pj": 8, "gf": 12, "gc": 9 },
+      { "team": "Panteras", "pts": 15, "pj": 8, "gf": 12, "gc": 9 },
+      { "team": "Panteras", "pts": 15, "pj": 8, "gf": 12, "gc": 9 },
       { "team": "Panteras", "pts": 15, "pj": 8, "gf": 12, "gc": 9 }
     ]
   },
-
   "goleadores": {
     "masculino": [
       { "name": "Juan Pérez", "team": "Tiburones", "goals": 12 },
@@ -20,7 +35,6 @@
       { "name": "Valentina Ríos", "team": "Panteras", "goals": 7 }
     ]
   },
-
   "tarjetas": {
     "masculino": [
       { "name": "Martín López", "team": "Águilas", "yellow": 3, "red": 1 },
@@ -31,7 +45,6 @@
       { "name": "Carla Medina", "team": "Panteras", "yellow": 1, "red": 1 }
     ]
   },
-
   "fixture": {
     "masculino": [
       {

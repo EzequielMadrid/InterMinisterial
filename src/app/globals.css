@@ -7,7 +7,6 @@
     text-wrap: balance;
   }
 }
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -63,7 +62,6 @@
     --chart-5: 340 75% 55%;
   }
 }
-
 @layer base {
   * {
     @apply border-border;
@@ -73,6 +71,46 @@
   }
 }
 
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgb(35, 116, 116);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: rgb(97, 173, 173);
+}
+
+/* True macOS-style scrollbar */
+.apple-scrollbar::-webkit-scrollbar {
+  height: 6px; /* Thin horizontal scrollbar */
+}
+.apple-scrollbar::-webkit-scrollbar-track {
+  background: transparent; /* Invisible track */
+}
+.apple-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(120, 120, 120, 0.35); /* Light, subtle gray like macOS */
+  border-radius: 999px; /* Rounded pill */
+  transition: background 0.2s ease;
+}
+.apple-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(120, 120, 120, 0.55); /* Slightly darker on hover */
+}
+
+/* Auto-hide behavior */
+.apple-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(120, 120, 120, 0.35) transparent;
+}
+
+/* My Fonts */
 .font-orbitron {
   font-family: "Orbitron Variable", sans-serif;
 }

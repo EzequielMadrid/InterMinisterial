@@ -31,7 +31,7 @@ function CreatePost() {
         toast.success("Publicación creada con éxito");
       }
     } catch (error) {
-      // console.error("Failed to create post:", error);
+      // console.error("Error al crear la publicación:", error);
       toast.error("Error al crear la publicación");
     } finally {
       setIsPosting(false);
