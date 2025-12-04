@@ -3,112 +3,119 @@
     "masculino": {
       "grupoA": [
         {
-          "team": "Recursos Hídricos",
-          "pts": 22,
-          "pj": 7,
-          "gf": 16,
+          "team": "Castro Rendón",
+          "pts": 6,
+          "pj": 3,
+          "gf": 10,
           "gc": 5,
-          "dg": 15
+          "dg": 0
         },
         {
           "team": "Subse General",
-          "pts": 18,
-          "pj": 7,
-          "gf": 16,
-          "gc": 5,
-          "dg": 11
+          "pts": 6,
+          "pj": 3,
+          "gf": 7,
+          "gc": 7,
+          "dg": 0
         },
         {
-          "team": "Subse de Familia",
-          "pts": 18,
-          "pj": 7,
-          "gf": 15,
-          "gc": 6,
-          "dg": 2
+          "team": "Salud FC",
+          "pts": 6,
+          "pj": 3,
+          "gf": 6,
+          "gc": 4,
+          "dg": 0
         },
-        { "team": "Salud FC", "pts": 14, "pj": 7, "gf": 12, "gc": 7, "dg": 5 }
+        { "team": "Metegol", "pts": 6, "pj": 3, "gf": 5, "gc": 12, "dg": 0 }
       ],
       "grupoB": [
-        { "team": "Metegol", "pts": 13, "pj": 7, "gf": 11, "gc": 8, "dg": 3 },
-        { "team": "IPVU FC", "pts": 11, "pj": 7, "gf": 10, "gc": 8, "dg": 2 },
+        {
+          "team": "Subse de Familia",
+          "pts": 4,
+          "pj": 3,
+          "gf": 15,
+          "gc": 3,
+          "dg": 0
+        },
+        { "team": "IPVU FC", "pts": 0, "pj": 3, "gf": 1, "gc": 9, "d0g": 2 },
         {
           "team": "Alta Tensión",
-          "pts": 10,
-          "pj": 7,
-          "gf": 9,
-          "gc": 7,
-          "dg": 2
+          "pts": 6,
+          "pj": 3,
+          "gf": 6,
+          "gc": 5,
+          "dg": 0
         },
-        { "team": "Barra FC", "pts": 10, "pj": 7, "gf": 13, "gc": 6, "dg": 7 }
+        { "team": "Fiscaneta", "pts": 7, "pj": 3, "gf": 9, "gc": 2, "dg": 0 }
       ],
       "grupoC": [
+        { "team": "Barra FC", "pts": 7, "pj": 3, "gf": 9, "gc": 2, "dg": 0 },
         {
           "team": "Economía FC",
-          "pts": 9,
-          "pj": 7,
-          "gf": 11,
-          "gc": 8,
-          "dg": 3
+          "pts": 6,
+          "pj": 3,
+          "gf": 9,
+          "gc": 7,
+          "dg": 0
         },
         {
-          "team": "Castro Rendón",
-          "pts": 8,
-          "pj": 7,
-          "gf": 15,
-          "gc": 6,
-          "dg": 3
+          "team": "Recursos Hídricos",
+          "pts": 4,
+          "pj": 3,
+          "gf": 1,
+          "gc": 3,
+          "dg": 0
         },
         {
           "team": "EPEN Zapala",
-          "pts": 5,
-          "pj": 7,
-          "gf": 9,
-          "gc": 11,
-          "dg": -2
-        },
-        { "team": "Fiscaneta", "pts": 2, "pj": 7, "gf": 14, "gc": 6, "dg": 8 }
+          "pts": 0,
+          "pj": 3,
+          "gf": 3,
+          "gc": 6,
+          "dg": 0
+        }
       ]
     },
     "femenino": {
       "grupoA": [
         {
           "team": "Fuerza y Elegancia",
-          "pts": 20,
-          "pj": 8,
-          "gf": 22,
-          "gc": 4,
-          "dg": 18
+          "pts": 9,
+          "pj": 3,
+          "gf": 14,
+          "gc": 5,
+          "dg": 0
         },
-        { "team": "ART.80", "pts": 15, "pj": 8, "gf": 14, "gc": 9, "dg": 5 },
-        {
-          "team": "Alta Tensión",
-          "pts": 15,
-          "pj": 8,
-          "gf": 12,
-          "gc": 8,
-          "dg": 4
-        },
-        { "team": "Rejunte", "pts": 15, "pj": 8, "gf": 13, "gc": 9, "dg": 4 }
-      ],
-      "grupoB": [
-        { "team": "Limonas", "pts": 15, "pj": 8, "gf": 14, "gc": 10, "dg": 4 },
+        { "team": "ART.80", "pts": 3, "pj": 3, "gf": 7, "gc": 9, "dg": 0 },
         {
           "team": "Las Infinitas",
-          "pts": 15,
-          "pj": 8,
-          "gf": 12,
-          "gc": 9,
-          "dg": 3
+          "pts": 0,
+          "pj": 3,
+          "gf": 2,
+          "gc": 16,
+          "dg": 0
+        },
+        { "team": "Rejunte", "pts": 6, "pj": 3, "gf": 13, "gc": 6, "dg": 0 }
+      ],
+      "grupoB": [
+        { "team": "Limonas", "pts": 4, "pj": 3, "gf": 10, "gc": 9, "dg": 0 },
+        {
+          "team": "Alta Tensión",
+          "pts": 4,
+          "pj": 3,
+          "gf": 10,
+          "gc": 7,
+          "dg": 0
         },
         {
           "team": "Todo Un Trámite",
-          "pts": 15,
-          "pj": 8,
-          "gf": 13,
-          "gc": 10,
-          "dg": 3
+          "pts": 9,
+          "pj": 3,
+          "gf": 16,
+          "gc": 3,
+          "dg": 0
         },
-        { "team": "La ISSNETA", "pts": 15, "pj": 8, "gf": 11, "gc": 9, "dg": 2 }
+        { "team": "La ISSNETA", "pts": 0, "pj": 3, "gf": 4, "gc": 18, "dg": 0 }
       ]
     }
   },
