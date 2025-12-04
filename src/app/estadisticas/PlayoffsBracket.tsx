@@ -114,28 +114,20 @@ export function PlayoffsBracket({
           <div className="flex flex-col items-center justify-center h-full gap-3">
             <div className="w-full md:w-3/4 px-4 py-4 rounded-2xl border border-white/8 bg-gradient-to-b from-purple-700/20 to-indigo-800/10 shadow-lg transform-gpu hover:scale-[1.01] transition">
               <div className="text-xs text-white/60">Gran Final</div>
-              <div className="mt-2 text-sm font-bold text-xl md:text-2xl tracking-tight">
+              <div className="mt-2 font-bold text-xl md:text-2xl tracking-tight">
                 {final.a.team}
               </div>
               <div className="mt-1 text-sm font-medium text-white/60">vs</div>
-              <div className="mt-1 text-sm font-bold text-xl md:text-2xl tracking-tight">
+              <div className="mt-1  font-bold text-xl md:text-2xl tracking-tight">
                 {final.b.team}
               </div>
             </div>
 
             <div className="text-[12px] text-white/60">
-              Modern sports UI inspired — lines, glow, and compact cards.
+              Solamente los mejores llegan a esta instancia. A hacer historia!
             </div>
           </div>
         </div>
-      </div>
-      <div className="mt-4 flex items-center justify-end gap-3">
-        <button
-          type="button"
-          className="text-sm px-3 py-1 rounded-full border border-white/10 bg-white/5 hover:bg-white/6"
-        >
-          View Full Bracket
-        </button>
       </div>
     </div>
   );

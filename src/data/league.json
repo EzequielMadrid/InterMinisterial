@@ -1,86 +1,118 @@
 {
   "tablas": {
-    "masculino": [
-      {
-        "team": "Castro Rendón",
-        "pts": 8,
-        "pj": 7,
-        "gf": 15,
-        "gc": 6,
-        "dg": 3
-      },
-      { "team": "Salud FC", "pts": 14, "pj": 7, "gf": 12, "gc": 7, "dg": 5 },
-      {
-        "team": "Subse General",
-        "pts": 18,
-        "pj": 7,
-        "gf": 16,
-        "gc": 5,
-        "dg": 11
-      },
-      { "team": "Metegol", "pts": 13, "pj": 7, "gf": 11, "gc": 8, "dg": 3 },
-      { "team": "Fiscaneta", "pts": 2, "pj": 7, "gf": 14, "gc": 6, "dg": 8 },
-      { "team": "Alta Tensión", "pts": 10, "pj": 7, "gf": 9, "gc": 7, "dg": 2 },
-      {
-        "team": "Subse de Familia",
-        "pts": 18,
-        "pj": 7,
-        "gf": 15,
-        "gc": 6,
-        "dg": 2
-      },
-      { "team": "IPVU FC", "pts": 11, "pj": 7, "gf": 10, "gc": 8, "dg": 2 },
-      { "team": "Barra FC", "pts": 10, "pj": 7, "gf": 13, "gc": 6, "dg": 7 },
-      { "team": "Economía FC", "pts": 9, "pj": 7, "gf": 11, "gc": 8, "dg": 3 },
-      {
-        "team": "Recursos Hídricos",
-        "pts": 22,
-        "pj": 7,
-        "gf": 16,
-        "gc": 5,
-        "dg": 15
-      },
-      { "team": "EPEN Zapala", "pts": 5, "pj": 7, "gf": 9, "gc": 11, "dg": -2 }
-    ],
-    "femenino": [
-      {
-        "team": "Fuerza y Elegancia",
-        "pts": 20,
-        "pj": 8,
-        "gf": 22,
-        "gc": 4,
-        "dg": 18
-      },
-      { "team": "Rejunte", "pts": 15, "pj": 8, "gf": 13, "gc": 9, "dg": 4 },
-      { "team": "ART.80", "pts": 15, "pj": 8, "gf": 14, "gc": 9, "dg": 5 },
-      {
-        "team": "Las Infinitas",
-        "pts": 15,
-        "pj": 8,
-        "gf": 12,
-        "gc": 9,
-        "dg": 3
-      },
-      {
-        "team": "Todo Un Trámite",
-        "pts": 15,
-        "pj": 8,
-        "gf": 13,
-        "gc": 10,
-        "dg": 3
-      },
-      {
-        "team": "Alta Tensión",
-        "pts": 15,
-        "pj": 8,
-        "gf": 12,
-        "gc": 8,
-        "dg": 4
-      },
-      { "team": "Limonas", "pts": 15, "pj": 8, "gf": 14, "gc": 10, "dg": 4 },
-      { "team": "La ISSNETA", "pts": 15, "pj": 8, "gf": 11, "gc": 9, "dg": 2 }
-    ]
+    "masculino": {
+      "grupoA": [
+        {
+          "team": "Recursos Hídricos",
+          "pts": 22,
+          "pj": 7,
+          "gf": 16,
+          "gc": 5,
+          "dg": 15
+        },
+        {
+          "team": "Subse General",
+          "pts": 18,
+          "pj": 7,
+          "gf": 16,
+          "gc": 5,
+          "dg": 11
+        },
+        {
+          "team": "Subse de Familia",
+          "pts": 18,
+          "pj": 7,
+          "gf": 15,
+          "gc": 6,
+          "dg": 2
+        },
+        { "team": "Salud FC", "pts": 14, "pj": 7, "gf": 12, "gc": 7, "dg": 5 }
+      ],
+      "grupoB": [
+        { "team": "Metegol", "pts": 13, "pj": 7, "gf": 11, "gc": 8, "dg": 3 },
+        { "team": "IPVU FC", "pts": 11, "pj": 7, "gf": 10, "gc": 8, "dg": 2 },
+        {
+          "team": "Alta Tensión",
+          "pts": 10,
+          "pj": 7,
+          "gf": 9,
+          "gc": 7,
+          "dg": 2
+        },
+        { "team": "Barra FC", "pts": 10, "pj": 7, "gf": 13, "gc": 6, "dg": 7 }
+      ],
+      "grupoC": [
+        {
+          "team": "Economía FC",
+          "pts": 9,
+          "pj": 7,
+          "gf": 11,
+          "gc": 8,
+          "dg": 3
+        },
+        {
+          "team": "Castro Rendón",
+          "pts": 8,
+          "pj": 7,
+          "gf": 15,
+          "gc": 6,
+          "dg": 3
+        },
+        {
+          "team": "EPEN Zapala",
+          "pts": 5,
+          "pj": 7,
+          "gf": 9,
+          "gc": 11,
+          "dg": -2
+        },
+        { "team": "Fiscaneta", "pts": 2, "pj": 7, "gf": 14, "gc": 6, "dg": 8 }
+      ]
+    },
+    "femenino": {
+      "grupoA": [
+        {
+          "team": "Fuerza y Elegancia",
+          "pts": 20,
+          "pj": 8,
+          "gf": 22,
+          "gc": 4,
+          "dg": 18
+        },
+        { "team": "ART.80", "pts": 15, "pj": 8, "gf": 14, "gc": 9, "dg": 5 },
+        {
+          "team": "Alta Tensión",
+          "pts": 15,
+          "pj": 8,
+          "gf": 12,
+          "gc": 8,
+          "dg": 4
+        },
+        { "team": "Rejunte", "pts": 15, "pj": 8, "gf": 13, "gc": 9, "dg": 4 }
+      ],
+      "grupoB": [
+        { "team": "Limonas", "pts": 15, "pj": 8, "gf": 14, "gc": 10, "dg": 4 },
+        {
+          "team": "Las Infinitas",
+          "pts": 15,
+          "pj": 8,
+          "gf": 12,
+          "gc": 9,
+          "dg": 3
+        },
+        {
+          "team": "Todo Un Trámite",
+          "pts": 15,
+          "pj": 8,
+          "gf": 13,
+          "gc": 10,
+          "dg": 3
+        },
+        { "team": "La ISSNETA", "pts": 15, "pj": 8, "gf": 11, "gc": 9, "dg": 2 }
+      ]
+    }
   },
+
   "goleadores": {
     "masculino": [
       { "name": "Juan Pérez", "team": "Tiburones", "goals": 12 },
@@ -91,6 +123,7 @@
       { "name": "Valentina Ríos", "team": "Panteras", "goals": 7 }
     ]
   },
+
   "tarjetas": {
     "masculino": [
       { "name": "Martín López", "team": "Águilas", "yellow": 3, "red": 1 },
@@ -101,6 +134,7 @@
       { "name": "Carla Medina", "team": "Panteras", "yellow": 1, "red": 1 }
     ]
   },
+
   "fixture": {
     "masculino": [
       {
