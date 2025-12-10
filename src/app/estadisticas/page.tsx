@@ -64,8 +64,14 @@ export default function LeaguePage() {
   return (
     <div className="w-full max-w-5xl mx-auto px-4 space-y-4">
       {showScrollModal && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-[999] animate-in fade-in duration-300">
-          <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl p-6 w-[90%] max-w-md animate-in zoom-in duration-300">
+        <div
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-[999] animate-in fade-in duration-300"
+          onClick={() => setShowScrollModal(false)} // ← Cierra al tocar fuera
+        >
+          <div
+            className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl p-6 w-[90%] max-w-md animate-in zoom-in duration-300"
+            onClick={(e) => e.stopPropagation()} // ← Evita que cierre al tocar adentro
+          >
             <h2 className="text-xl font-bold text-center mb-2">
               👀 No te pierdas los Playoffs
             </h2>

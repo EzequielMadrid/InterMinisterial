@@ -27,6 +27,9 @@ function MobileNavbar() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const { user, isSignedIn } = useUser();
   const { theme, setTheme } = useTheme();
+  // Automatically close menu when navigating
+  // MobileMenu close callback
+  const closeMenu = () => setShowMobileMenu(false);
 
   const perfilHref = user
     ? `/perfil/${
@@ -65,7 +68,7 @@ function MobileNavbar() {
               className="flex items-center gap-3 justify-start"
               asChild
             >
-              <Link href="/">
+              <Link href="/" onClick={closeMenu}>
                 <HomeIcon className="w-4 h-4" />
                 Foro
               </Link>
@@ -78,7 +81,7 @@ function MobileNavbar() {
                   className="flex items-center gap-3 justify-start"
                   asChild
                 >
-                  <Link href="/notificaciones">
+                  <Link href="/notificaciones" onClick={closeMenu}>
                     <BellIcon className="w-4 h-4" />
                     Notificaciones
                   </Link>
@@ -89,7 +92,7 @@ function MobileNavbar() {
                   className="flex items-center gap-3 justify-start"
                   asChild
                 >
-                  <Link href="/estadisticas">
+                  <Link href="/estadisticas" onClick={closeMenu}>
                     <Trophy className="w-4 h-4" />
                     Estadísticas
                   </Link>
@@ -100,7 +103,7 @@ function MobileNavbar() {
                   className="flex items-center gap-3 justify-start"
                   asChild
                 >
-                  <Link href={perfilHref}>
+                  <Link href={perfilHref} onClick={closeMenu}>
                     <UserIcon className="w-4 h-4" />
                     Perfil
                   </Link>
@@ -110,6 +113,7 @@ function MobileNavbar() {
                   <Button
                     variant="ghost"
                     className="flex items-center gap-3 justify-start w-full"
+                    onClick={closeMenu}
                   >
                     <LogOutIcon className="w-4 h-4" />
                     Cerrar sesión
@@ -118,7 +122,11 @@ function MobileNavbar() {
               </>
             ) : (
               <SignInButton mode="modal">
-                <Button variant="default" className="w-full">
+                <Button
+                  variant="default"
+                  className="w-full"
+                  onClick={closeMenu}
+                >
                   Iniciar sesión
                 </Button>
               </SignInButton>
