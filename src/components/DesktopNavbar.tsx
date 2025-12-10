@@ -2,7 +2,7 @@ import Link from "next/link";
 import { currentUser } from "@clerk/nextjs/server";
 import { SignInButton, UserButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
-import ModeToggle from "../ModeToggle";
+import ModeToggle from "./ModeToggle";
 import { BellIcon, HomeIcon, Trophy, UserIcon } from "lucide-react";
 
 async function DesktopNavbar() {
