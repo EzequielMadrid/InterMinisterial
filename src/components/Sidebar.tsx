@@ -8,15 +8,23 @@ import { getUserByClerkId } from "@/actions/user.actions";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 
-async function Sidebar() {
+export default async function Sidebar() {
   const authUser = await currentUser();
-  let sidebarContent;
+
   if (!authUser) {
-    sidebarContent = <UnAuthenticatedSidebar />;
-  } else {
-    const user = await getUserByClerkId(authUser.id);
-    if (!user) return null;
-    sidebarContent = (
+    return (
+      <div className="sticky top-20 space-y-4">
+        <UnAuthenticatedSidebar />
+        <SidebarAds />
+      </div>
+    );
+  }
+
+  const user = await getUserByClerkId(authUser.id);
+  if (!user) return null;
+
+  return (
+    <div className="sticky top-20 space-y-4">
       <Card>
         <CardContent className="pt-6">
           <div className="flex flex-col items-center text-center">
@@ -33,29 +41,37 @@ async function Sidebar() {
                 <p className="text-sm text-muted-foreground">{user.username}</p>
               </div>
             </Link>
+
             {user.bio && (
               <p className="mt-3 text-sm text-muted-foreground">{user.bio}</p>
             )}
+
             <div className="w-full">
               <Separator className="my-4" />
+
               <div className="flex justify-between">
                 <div>
                   <p className="font-mono">{user._count.following}</p>
                   <p className="text-xs text-muted-foreground">Siguiendo</p>
                 </div>
+
                 <Separator orientation="vertical" />
+
                 <div>
                   <p className="font-mono">{user._count.followers}</p>
                   <p className="text-xs text-muted-foreground">Seguidores</p>
                 </div>
               </div>
+
               <Separator className="my-4" />
             </div>
+
             <div className="w-full space-y-2 text-sm">
               <div className="flex items-center text-muted-foreground">
                 <MapPinIcon className="w-4 h-4 mr-2" />
                 {user.location || "Sin ubicación"}
               </div>
+
               <div className="flex items-center text-muted-foreground">
                 <LinkIcon className="w-4 h-4 mr-2 shrink-0" />
                 {user.website ? (
@@ -75,16 +91,8 @@ async function Sidebar() {
           </div>
         </CardContent>
       </Card>
-    );
-  }
 
-  return (
-    <div className="sticky top-20 space-y-4">
-      {sidebarContent}
-      {/* Always visible below */}
       <SidebarAds />
     </div>
   );
 }
-
-export default Sidebar;

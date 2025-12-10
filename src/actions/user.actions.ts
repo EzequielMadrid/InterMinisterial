@@ -9,17 +9,32 @@ export async function syncUser() {
     const { userId } = await auth();
     const user = await currentUser();
     if (!userId || !user) return;
-    const existingUser = await prisma.user.findUnique({
-      where: { clerkId: userId },
+
+    const email = user.emailAddresses[0].emailAddress;
+
+    // 1. looking for existing user by email
+    const existingByEmail = await prisma.user.findUnique({
+      where: { email },
     });
-    if (existingUser) return existingUser;
+
+    if (existingByEmail) {
+      // if the clerkId changed, update it
+      if (existingByEmail.clerkId !== userId) {
+        return prisma.user.update({
+          where: { email },
+          data: { clerkId: userId },
+        });
+      }
+      return existingByEmail;
+    }
+
+    // 2. if not found, create a new user
     const dbUser = await prisma.user.create({
       data: {
         clerkId: userId,
         name: `${user.firstName || ""} ${user.lastName || ""}`,
-        username:
-          user.username ?? user.emailAddresses[0].emailAddress.split("@")[0],
-        email: user.emailAddresses[0].emailAddress,
+        username: user.username ?? email.split("@")[0],
+        email,
         image: user.imageUrl,
       },
     });
@@ -46,7 +61,6 @@ export async function getDbUserId() {
   if (!clerkId) return null;
   const user = await getUserByClerkId(clerkId);
   if (!user) throw new Error("User not found");
-
   return user.id;
 }
 
@@ -54,17 +68,14 @@ export async function getRandomUsers() {
   try {
     const userId = await getDbUserId();
     if (!userId) return [];
-    // get 3 random users exclude ourselves & users that we already follow
-    const randomUsers = await prisma.user.findMany({
+    return prisma.user.findMany({
       where: {
         AND: [
           { NOT: { id: userId } },
           {
             NOT: {
               followers: {
-                some: {
-                  followerId: userId,
-                },
+                some: { followerId: userId },
               },
             },
           },
@@ -75,18 +86,11 @@ export async function getRandomUsers() {
         name: true,
         username: true,
         image: true,
-        _count: {
-          select: {
-            followers: true,
-          },
-        },
+        _count: { select: { followers: true } },
       },
       take: 3,
     });
-
-    return randomUsers;
-  } catch (error) {
-    // console.log("UPS! No se encuentran usuarios.", error);
+  } catch {
     return [];
   }
 }
@@ -96,6 +100,7 @@ export async function toggleFollow(targetUserId: string) {
     const userId = await getDbUserId();
     if (!userId) return;
     if (userId === targetUserId) throw new Error("Auto-follow inválido");
+
     const existingFollow = await prisma.follows.findUnique({
       where: {
         followerId_followingId: {
@@ -104,8 +109,8 @@ export async function toggleFollow(targetUserId: string) {
         },
       },
     });
+
     if (existingFollow) {
-      // unfollow
       await prisma.follows.delete({
         where: {
           followerId_followingId: {
@@ -115,7 +120,6 @@ export async function toggleFollow(targetUserId: string) {
         },
       });
     } else {
-      // follow
       await prisma.$transaction([
         prisma.follows.create({
           data: {
@@ -126,17 +130,16 @@ export async function toggleFollow(targetUserId: string) {
         prisma.notification.create({
           data: {
             type: "FOLLOW",
-            userId: targetUserId, // user being followed
-            creatorId: userId, // user following
+            userId: targetUserId,
+            creatorId: userId,
           },
         }),
       ]);
     }
-    revalidatePath("/");
 
+    revalidatePath("/");
     return { success: true };
-  } catch (error) {
-    // console.log("UPS! El botón de seguir no funciona", error);
+  } catch {
     return { success: false, error: "UPS! El botón de seguir no funciona" };
   }
 }
