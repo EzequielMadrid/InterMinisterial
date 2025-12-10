@@ -3,11 +3,12 @@
 import { UploadDropzone } from "@/lib/uploadthing";
 import { XIcon } from "lucide-react";
 import Image from "next/image";
+import type { OurFileRouter } from "@/app/api/uploadthing/core";
 
 interface ImageUploadProps {
   onChange: (url: string) => void;
   value: string;
-  endpoint: "imageUploader"; // postImage endpoint
+  endpoint: keyof OurFileRouter;
 }
 
 export default function ImageUpload({
