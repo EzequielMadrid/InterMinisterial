@@ -2,8 +2,8 @@ import React from "react";
 import Link from "next/link";
 import { currentUser } from "@clerk/nextjs/server";
 import { syncUser } from "@/actions/user.actions";
-import DesktopNavbar from "./DesktopNavbar";
-import MobileNavbar from "./MobileNavbar";
+import DesktopNavbar from "./navBar/DesktopNavbar";
+import MobileNavbar from "./navBar/MobileNavbar";
 // Supports weights 400-900
 import "@fontsource-variable/orbitron";
 

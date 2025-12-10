@@ -1,8 +1,8 @@
 import { currentUser } from "@clerk/nextjs/server";
-import { Card, CardContent } from "../ui/card";
+import { Card, CardContent } from "./ui/card";
 import Link from "next/link";
-import UnAuthenticatedSidebar from "./UnAuthenticatedSidebar";
-import SidebarAds from "./SidebarAds";
+import UnAuthenticatedSidebar from "./leftBar/UnAuthenticatedSidebar";
+import SidebarAds from "./leftBar/SidebarAds";
 import { LinkIcon, MapPinIcon } from "lucide-react";
 import { getUserByClerkId } from "@/actions/user.actions";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";

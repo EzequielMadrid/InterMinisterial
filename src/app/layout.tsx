@@ -3,8 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "next-themes";
-import Navbar from "@/components/navBar/Navbar";
-import Sidebar from "@/components/leftBar/Sidebar";
+import Navbar from "@/components/Navbar";
+import Sidebar from "@/components/Sidebar";
 import { Toaster } from "react-hot-toast";
 import { esAR } from "./es-AR";
 
