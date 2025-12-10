@@ -57,7 +57,7 @@ function CreatePost() {
           {(showImageUpload || imageUrl) && (
             <div className="border rounded-lg p-4">
               <ImageUpload
-                endpoint="imageUploader" // postImage endpoint
+                endpoint="postImage"
                 value={imageUrl}
                 onChange={(url) => {
                   setImageUrl(url);
