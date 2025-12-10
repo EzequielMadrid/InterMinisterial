@@ -43,14 +43,14 @@ export function PlayoffsBracket({
 
   // Semifinals placeholders
   const sf = [
-    { a: { team: "Winner QF1", pts: 0 }, b: { team: "Winner QF2", pts: 0 } },
-    { a: { team: "Winner QF3", pts: 0 }, b: { team: "Winner QF4", pts: 0 } },
+    { a: { team: "Ganador QF1", pts: 0 }, b: { team: "Ganador QF2", pts: 0 } },
+    { a: { team: "Ganador QF3", pts: 0 }, b: { team: "Ganador QF4", pts: 0 } },
   ];
 
   // Final placeholder
   const final = {
-    a: { team: "Winner SF1", pts: 0 },
-    b: { team: "Winner SF2", pts: 0 },
+    a: { team: "Ganador SF1", pts: 0 },
+    b: { team: "Ganador SF2", pts: 0 },
   };
 
   return (

@@ -18,14 +18,7 @@
           "gc": 7,
           "dg": 0
         },
-        {
-          "team": "Salud FC",
-          "pts": 6,
-          "pj": 3,
-          "gf": 6,
-          "gc": 4,
-          "dg": 0
-        },
+        { "team": "Salud FC", "pts": 6, "pj": 3, "gf": 6, "gc": 4, "dg": 0 },
         { "team": "Metegol", "pts": 6, "pj": 3, "gf": 5, "gc": 12, "dg": 0 }
       ],
       "grupoB": [
@@ -37,7 +30,7 @@
           "gc": 3,
           "dg": 0
         },
-        { "team": "IPVU FC", "pts": 0, "pj": 3, "gf": 1, "gc": 9, "d0g": 2 },
+        { "team": "IPVU FC", "pts": 0, "pj": 3, "gf": 1, "gc": 9, "dg": 0 },
         {
           "team": "Alta Tensión",
           "pts": 6,
@@ -50,14 +43,7 @@
       ],
       "grupoC": [
         { "team": "Barra FC", "pts": 7, "pj": 3, "gf": 9, "gc": 2, "dg": 0 },
-        {
-          "team": "Economía FC",
-          "pts": 6,
-          "pj": 3,
-          "gf": 9,
-          "gc": 7,
-          "dg": 0
-        },
+        { "team": "Economía FC", "pts": 6, "pj": 3, "gf": 9, "gc": 7, "dg": 0 },
         {
           "team": "Recursos Hídricos",
           "pts": 4,
@@ -66,14 +52,7 @@
           "gc": 3,
           "dg": 0
         },
-        {
-          "team": "EPEN Zapala",
-          "pts": 0,
-          "pj": 3,
-          "gf": 3,
-          "gc": 6,
-          "dg": 0
-        }
+        { "team": "EPEN Zapala", "pts": 0, "pj": 3, "gf": 3, "gc": 6, "dg": 0 }
       ]
     },
     "femenino": {
@@ -122,57 +101,112 @@
 
   "goleadores": {
     "masculino": [
-      { "name": "Juan Pérez", "team": "Tiburones", "goals": 12 },
-      { "name": "Carlos Díaz", "team": "Leones", "goals": 9 }
+      {
+        "name": "Gonzalo Ariel Sanchez Diego",
+        "team": "ALTA TENSION",
+        "goals": 6
+      },
+      { "name": "Ignacio Fuentes", "team": "ECONOMÍA FC", "goals": 5 },
+      { "name": "Mauro Cisneros", "team": "FISCANETA", "goals": 4 },
+      { "name": "Maximiliano Diego Diaz", "team": "SUBSE GENERAL", "goals": 4 },
+      { "name": "David Isaac Bergenfeld", "team": "EPEN ZAPALA", "goals": 3 }
     ],
     "femenino": [
-      { "name": "Laura Gómez", "team": "Águilas", "goals": 14 },
-      { "name": "Valentina Ríos", "team": "Panteras", "goals": 7 }
+      { "name": "Montaña Natalia", "team": "FUERZA Y ELEGANCIA", "goals": 11 },
+      { "name": "Sambueza Shirley", "team": "Limonas", "goals": 10 },
+      { "name": "Cecilia Covati", "team": "ALTA TENSION", "goals": 9 },
+      { "name": "Dimuro Carina", "team": "FUERZA Y ELEGANCIA", "goals": 9 },
+      {
+        "name": "Florencia Cecilia Nicoletti",
+        "team": "TODO UN TRÁMITE",
+        "goals": 8
+      }
     ]
   },
-
-  "tarjetas": {
-    "masculino": [
-      { "name": "Martín López", "team": "Águilas", "yellow": 3, "red": 1 },
-      { "name": "Diego Romero", "team": "Tiburones", "yellow": 2, "red": 0 }
-    ],
-    "femenino": [
-      { "name": "Sofía Torres", "team": "Águilas", "yellow": 2, "red": 0 },
-      { "name": "Carla Medina", "team": "Panteras", "yellow": 1, "red": 1 }
-    ]
-  },
-
   "fixture": {
     "masculino": [
       {
-        "date": "2025-02-10",
+        "date": "05/11/25",
         "time": "18:00",
-        "home": "Tiburones",
-        "away": "Leones",
-        "field": "Cancha 1"
+        "home": "METEGOL",
+        "away": "SUBSE GENERAL",
+        "field": "Cubito",
+        "score": "2 - 3"
       },
       {
-        "date": "2025-02-12",
-        "time": "20:00",
-        "home": "Águilas",
-        "away": "Titanes",
-        "field": "Cancha 2"
+        "date": "Sin asignar",
+        "time": "19:00",
+        "home": "SALUD FC",
+        "away": "CASTRO RENDON",
+        "field": "Cubito",
+        "score": "0 - 2"
+      },
+      {
+        "date": "05/11/25",
+        "time": "18:00",
+        "home": "ALTA TENSION",
+        "away": "FISCANETA",
+        "field": "Cubito",
+        "score": "1 - 4"
+      },
+      {
+        "date": "Sin asignar",
+        "time": "19:00",
+        "home": "IPVU FC",
+        "away": "SUBSE DE FAMILIA",
+        "field": "Cubito",
+        "score": "0 - 2"
+      },
+      {
+        "date": "04/11/25",
+        "time": "18:00",
+        "home": "ECONOMÍA FC",
+        "away": "EPEN ZAPALA",
+        "field": "Cubito",
+        "score": "4 - 3"
+      },
+      {
+        "date": "04/11/25",
+        "time": "19:00",
+        "home": "RECURSOS HÍDRICOS",
+        "away": "BARRA FC",
+        "field": "Cubito",
+        "score": "0 - 0"
       }
     ],
+
     "femenino": [
       {
-        "date": "2025-02-11",
-        "time": "17:00",
-        "home": "Águilas",
-        "away": "Panteras",
-        "field": "Cancha 1"
+        "date": "Sin asignar",
+        "time": "16:00",
+        "home": "FUERZA Y ELEGANCIA",
+        "away": "REJUNTE FEM",
+        "field": "Independiente (Centro)",
+        "score": "3 - 2"
       },
       {
-        "date": "2025-02-13",
-        "time": "19:30",
-        "home": "Fénix",
-        "away": "Águilas",
-        "field": "Cancha 3"
+        "date": "Sin asignar",
+        "time": "17:00",
+        "home": "ART. 80",
+        "away": "LAS INFINITAS",
+        "field": "Independiente (Centro)",
+        "score": "3 - 0"
+      },
+      {
+        "date": "Sin asignar",
+        "time": "16:00",
+        "home": "Limonas",
+        "away": "La Issneta",
+        "field": "Independiente (Centro)",
+        "score": "6 - 2"
+      },
+      {
+        "date": "Sin asignar",
+        "time": "17:00",
+        "home": "TODO UN TRÁMITE",
+        "away": "ALTA TENSION",
+        "field": "Independiente (Centro)",
+        "score": "5 - 2"
       }
     ]
   }

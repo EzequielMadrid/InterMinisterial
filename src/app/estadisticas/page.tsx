@@ -20,19 +20,13 @@ interface Scorer {
   goals: number;
 }
 
-interface Cards {
-  name: string;
-  team: string;
-  yellow: number;
-  red: number;
-}
-
 interface FixtureMatch {
   date: string;
   time: string;
   home: string;
   away: string;
   field: string;
+  score?: string;
 }
 
 interface LeagueData {
@@ -41,34 +35,54 @@ interface LeagueData {
     masculino: Scorer[];
     femenino: Scorer[];
   };
-  tarjetas: {
-    masculino: Cards[];
-    femenino: Cards[];
-  };
   fixture: {
     masculino: FixtureMatch[];
     femenino: FixtureMatch[];
   };
 }
 
-type Section = "tabla" | "goleadores" | "tarjetas" | "fixture";
+type Section = "tabla" | "goleadores" | "fixture";
 
 export default function LeaguePage() {
   const [gender, setGender] = useState<"masculino" | "femenino">("masculino");
   const [data, setData] = useState<LeagueData | null>(null);
   const [activeSection, setActiveSection] = useState<Section>("tabla");
+  const [showScrollModal, setShowScrollModal] = useState(false);
 
   useEffect(() => {
     setData(leagueData as LeagueData);
   }, []);
 
+  useEffect(() => {
+    if (activeSection === "tabla") setShowScrollModal(true);
+  }, [activeSection]);
+
   if (!data) return <p className="text-center py-10">Loading...</p>;
 
-  const { tablas, goleadores, tarjetas, fixture } = data;
+  const { tablas, goleadores, fixture } = data;
 
   return (
     <div className="w-full max-w-5xl mx-auto px-4 space-y-4">
-      {/* Gender selector */}
+      {showScrollModal && (
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-[999] animate-in fade-in duration-300">
+          <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl p-6 w-[90%] max-w-md animate-in zoom-in duration-300">
+            <h2 className="text-xl font-bold text-center mb-2">
+              👀 No te pierdas los Playoffs
+            </h2>
+            <p className="text-center text-sm text-neutral-600 dark:text-neutral-300 mb-4">
+              Desplázate hasta el final de la tabla para ver el cuadro de
+              playoffs.
+            </p>
+            <Button
+              className="w-full mt-2"
+              onClick={() => setShowScrollModal(false)}
+            >
+              Ir
+            </Button>
+          </div>
+        </div>
+      )}
+
       <div className="flex gap-4 justify-center mb-4">
         <Button
           variant={gender === "masculino" ? "default" : "outline"}
@@ -84,9 +98,8 @@ export default function LeaguePage() {
         </Button>
       </div>
 
-      {/* Section selector */}
       <div className="flex justify-center gap-4 mb-4">
-        {["tabla", "goleadores", "tarjetas", "fixture"].map((sec) => (
+        {["tabla", "goleadores", "fixture"].map((sec) => (
           <Button
             key={sec}
             variant={activeSection === sec ? "default" : "outline"}
@@ -97,22 +110,24 @@ export default function LeaguePage() {
         ))}
       </div>
 
-      {/* TABLES */}
       {activeSection === "tabla" && (
         <LeagueTables tablas={tablas} gender={gender} />
       )}
 
-      {/* GOLEADORES */}
       {activeSection === "goleadores" && (
         <Card className="h-fit">
           <CardHeader>
-            <CardTitle>Top 5 Goleadores</CardTitle>
+            <CardTitle>
+              Top 5 {gender === "femenino" ? "Goleadoras" : "Goleadores"}
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Jugador</TableHead>
+                  <TableHead>
+                    {gender === "femenino" ? "Jugadora" : "Jugador"}
+                  </TableHead>
                   <TableHead>Equipo</TableHead>
                   <TableHead className="text-center">Goles</TableHead>
                 </TableRow>
@@ -133,42 +148,6 @@ export default function LeaguePage() {
         </Card>
       )}
 
-      {/* CARDS */}
-      {activeSection === "tarjetas" && (
-        <Card className="h-fit">
-          <CardHeader>
-            <CardTitle>Tarjetas</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Jugador</TableHead>
-                  <TableHead>Equipo</TableHead>
-                  <TableHead className="text-center">Amarilla</TableHead>
-                  <TableHead className="text-center">Roja</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {tarjetas[gender].map((p, i) => (
-                  <TableRow key={i}>
-                    <TableCell>{p.name}</TableCell>
-                    <TableCell>{p.team}</TableCell>
-                    <TableCell className="text-yellow-600 text-center font-semibold">
-                      {p.yellow}
-                    </TableCell>
-                    <TableCell className="text-red-600 text-center font-semibold">
-                      {p.red}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </CardContent>
-        </Card>
-      )}
-
-      {/* FIXTURE */}
       {activeSection === "fixture" && (
         <Card className="h-fit">
           <CardHeader>
@@ -183,6 +162,7 @@ export default function LeaguePage() {
                   <TableHead>Local</TableHead>
                   <TableHead>Visitante</TableHead>
                   <TableHead className="text-center">Cancha</TableHead>
+                  <TableHead className="text-center">Resultado</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -193,6 +173,9 @@ export default function LeaguePage() {
                     <TableCell>{m.home}</TableCell>
                     <TableCell>{m.away}</TableCell>
                     <TableCell className="text-center">{m.field}</TableCell>
+                    <TableCell className="text-center">
+                      {m.score ?? "-"}
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>

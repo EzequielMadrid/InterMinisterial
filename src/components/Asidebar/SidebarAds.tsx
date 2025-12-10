@@ -15,7 +15,7 @@ export default function SidebarAds() {
         <div className="rounded-xl overflow-hidden">
           <iframe
             className="w-full h-40"
-            src="https://www.youtube.com/embed/yTVDFAZNhgo?si=X5RHxWQC94t_ZGqW"
+            src="https://www.youtube.com/embed/iAxg1TaLg3M?si=Bcg4y9SRxqHuC5dT"
             title="Anuncio"
             allowFullScreen
           />
